@@ -2,12 +2,12 @@
 
 const logable = fields => {
 
-    function logable(data) {
+    function Logable(data) {
         this.values = data;
     }
 
     for (const key in fields) {
-        Object.defineProperty(logable.prototype, key, {
+        Object.defineProperty(Logable.prototype, key, {
             get() {
                 console.log('Reading key:', key);
                 return this.values[key];
@@ -25,14 +25,14 @@ const logable = fields => {
         });
     }
 
-    logable.prototype.toString = function() {
+    Logable.prototype.toString = function() {
         let result = this.constructor.name + ': ';
         for (const key in fields) {
             result += this.values[key] + ' ';
         }
         return result;
     };
-    return logable;
+    return Logable;
 }
 
 //Usage
